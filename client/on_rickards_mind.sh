@@ -5,7 +5,8 @@ PORT="7680"
 
 which nc >/dev/null
 if [ ! $? -eq 0 ]; then
-	echo -e "\e[m4Oh no!\e[m0 You don't have the program 'nc' needed for this to work.. Contact Rickard!"
+	printf "\e[1mOh no!\e[0m You don't have the program 'nc' needed for this to work.. \e[5mContact Rickard!\e[0m\n"
+	exit 1
 fi
 
 msg=$(echo hej | nc $SERVER $PORT )
