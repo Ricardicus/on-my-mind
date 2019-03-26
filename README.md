@@ -1,4 +1,4 @@
-# Program used to let me pick your brain
+# Program used to get text
 
 This program consists of a backend, intended to run on a raspberry PI with 
 ZMQ installed, and a frontend having netcat installed. 
