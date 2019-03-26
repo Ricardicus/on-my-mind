@@ -3,8 +3,8 @@ import zmq
 import datetime
 import socket as sp
 
-HOST = '127.0.0.1'  # Standard loopback interface address (localhost)
-PORT = 65432        # Port to listen on (non-privileged ports are > 1023)
+HOST = '192.168.68.104'  # Standard loopback interface address (localhost)
+PORT = 7680        # Port to listen on (non-privileged ports are > 1023)
 
 PROVIDER_SOCKET = "ipc:///tmp/provider_ipc"
 
