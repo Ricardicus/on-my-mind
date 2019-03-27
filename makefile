@@ -6,4 +6,4 @@ server:
 	make -C $@
 
 clean:
-	make clean -C server
+	make $@ -C server
