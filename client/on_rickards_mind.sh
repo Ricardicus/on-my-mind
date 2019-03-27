@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SERVER="192.168.68.104"
+SERVER="90.230.94.128"
 PORT="7680"
 
 which nc >/dev/null
