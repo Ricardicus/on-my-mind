@@ -14,7 +14,9 @@ if __name__=="__main__":
     socket.setsockopt_string(zmq.SUBSCRIBE, "")
     socket.connect (PROVIDER_SOCKET)
 
-    print("Make sure your reachable, if your behind a NAT router (such as a WiFi access point) do port forwarding.")
+    print("Make sure your IP is reachable.")
+    print("If your behind a NAT router (such as a WiFi),")
+    print("you must do port forwarding before anyone can reach you.")
     HOST = input("Enter you WAN adress, make sure its reachable:\n")
     try:
         PORT = int(input("Enter the port your hosting the service on."))
