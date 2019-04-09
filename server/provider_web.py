@@ -32,9 +32,9 @@ if __name__=="__main__":
             with conn:
                 print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ":", 'Connected by', addr)
                 string = socket.recv()
-
+                print("Sending: " + str(string))
                 while True:
                     data = conn.recv(1024)
-                    if not data:
-                        break
                     conn.sendall(string)
+                    conn.close()
+                    break
