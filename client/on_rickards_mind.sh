@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SERVER="90.230.94.128"
-PORT="7680"
+PORT="7658"
 
 which nc >/dev/null
 if [ ! $? -eq 0 ]; then
