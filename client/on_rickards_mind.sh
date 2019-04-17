@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SERVER="127.0.0.1"
-PORT="8080"
+SERVER="90.230.94.128"
+PORT="7658"
 
 VERSION_FILE=".moddate"
 
