@@ -1,7 +1,9 @@
 #!/bin/bash
 
-SERVER="90.230.94.128"
-PORT="7658"
+SERVER="127.0.0.1"
+PORT="8080"
+
+VERSION_FILE=".moddate"
 
 which nc >/dev/null
 if [ ! $? -eq 0 ]; then
@@ -10,4 +12,19 @@ if [ ! $? -eq 0 ]; then
 fi
 
 msg=$(echo hej | nc $SERVER $PORT )
-echo $msg
+moddate=$(echo "$msg" | sed 's/\(.*\)\@\(.*\)/\1/')
+display=$(echo "$msg" | sed 's/\(.*\)\@\(.*\)/\2/')
+
+if [ ! -f "$VERSION_FILE" ]; then
+	echo "Initial" > $VERSION_FILE
+fi
+
+oldmoddate=$(cat $VERSION_FILE)
+
+if [ "$moddate" != "$oldmoddate" ]; then
+	printf "\e[1mRickard has updated the content! Last modified: $moddate\e[0m\n"
+fi
+
+echo $display
+
+printf "$moddate" > $VERSION_FILE

@@ -15,7 +15,10 @@ strings_t* read_and_get_thoughts(const char* file)
 {
 	FILE *fp;
 	strings_t *strings;
+	struct stat filestat;
+	struct tm *tm;
 	char buffer[MAX_THOUGHT_LEN];
+	char date[20];
 
 	fp = fopen(file, "r");
 
@@ -23,6 +26,9 @@ strings_t* read_and_get_thoughts(const char* file)
 		fprintf(stderr, "%s.%d error: Unable to open file '%s'.\n", __FILE__, __LINE__, file);
 		exit(1);
 	}
+
+	stat(file, &filestat);
+	strftime(date, sizeof(date), "%d-%m-%y %H:%M:%S", localtime(&(filestat.st_ctime)));
 
 	strings = calloc(1, sizeof(strings_t));
 	if ( strings == NULL ) {
@@ -43,14 +49,15 @@ strings_t* read_and_get_thoughts(const char* file)
 	while ( fgets(buffer, sizeof(buffer), fp) != NULL ) {
 		size_t quote_length = strlen(buffer);
 		char *c;
-		char *string = calloc(quote_length+1, 1);
+		size_t size = quote_length+sizeof(date)+2;
+		char *string = calloc(size, 1);
 
 		if ( string == NULL ) {
 			fprintf(stderr, "%s.%d error: Unable to allocate memory.\n", __FILE__, __LINE__);
 			exit(1);
 		}
 
-		memcpy(string, buffer, quote_length);
+		snprintf(string, size, "%s@%s", date, buffer);
 
 		c = strchr(string, '\n');
 		if ( c == NULL ) {

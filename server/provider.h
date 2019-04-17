@@ -3,6 +3,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <errno.h>
+#include <sys/stat.h>
+#include <time.h>
 #include "zmq.h"
 
 #define MAX_THOUGHT_LEN          (4096)
